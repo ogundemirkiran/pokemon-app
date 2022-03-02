@@ -1,0 +1,12 @@
+.generationContainer {
+  text-align: center;
+}
+.pokeGeneration {
+  width: 250px;
+  margin: auto;
+}
+.pokeCount {
+  font-size: small;
+  width: 250px;
+  margin: auto;
+}
