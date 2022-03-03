@@ -1,3 +1,4 @@
+import { MantineProvider } from "@mantine/core";
 import type { AppProps } from "next/app";
 import { Provider } from "react-redux";
 import { store } from "../src/redux/store";
@@ -7,9 +8,11 @@ import "../styles/reset.css";
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
-    <Provider store={store}>
-      <Component {...pageProps} />
-    </Provider>
+    <MantineProvider theme={{ loader: "bars" }}>
+      <Provider store={store}>
+        <Component {...pageProps} />
+      </Provider>
+    </MantineProvider>
   );
 }
 

@@ -1,0 +1,10 @@
+.closeBtn {
+  text-align: end;
+}
+
+.closeBtn img:hover {
+  background-color: black;
+  padding: 3px;
+  border-radius: 50%;
+  cursor: pointer;
+}

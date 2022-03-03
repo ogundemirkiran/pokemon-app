@@ -2,6 +2,7 @@ import {
     createSlice,
     createAsyncThunk
   } from '@reduxjs/toolkit';
+import { error } from 'console';
 import { API } from '../../api';
 
 
@@ -17,6 +18,8 @@ import { API } from '../../api';
     'pokemon/fetchPokemon',
     async (url?:string) => {
       console.log(url)
+     
+
         if(url === undefined){
           let response = await API.POKEMON_LIST()
           return response.data
@@ -37,12 +40,14 @@ import { API } from '../../api';
     initialState: {
         data:{},
         dataList: <any>[],
-        status: ""
+        status: "idle",
+        error: <any>null
+
     },
     reducers: {
       getAllPokemon: (state, action) => {
-        //   console.log(action)
-        // state.dataList = <any>[action.payload  ]
+          console.log(action)
+        
       },
    
     },
@@ -62,7 +67,8 @@ import { API } from '../../api';
           })
           .addCase(fetchPokemonList.rejected, (state, action) => {
             state.status = "failed"
-           console.log(action)
+            state.error = action.error.message;
+           
 
            
           })
