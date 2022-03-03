@@ -1,4 +1,4 @@
-const path = require('path');
+export const path:any = require('path');
 
 module.exports = {
   // So parent files don't get applied
@@ -12,7 +12,7 @@ module.exports = {
     node: true,
     mocha: true,
   },
-  extends: ['airbnb'],
+  extends: ["react-app",'airbnb'],
   parser: 'babel-eslint',
   parserOptions: {
     ecmaVersion: 7,
@@ -29,6 +29,8 @@ module.exports = {
     'react/destructuring-assignment': 'off',
     'react/jsx-filename-extension': 'off',
     'react/require-default-props': 'off',
+    "react/no-unescaped-entities": "off",
+    "@next/next/no-page-custom-font": "off",
     'jsx-a11y/label-has-associated-control': 'off',
     'jsx-a11y/label-has-for': 'off',
     'jsx-a11y/no-autofocus': 'off',

@@ -32,12 +32,15 @@ import { API } from '../../api';
         data:{},
         dataList: <any>[],
         status: "idle",
-        error: <any>null
+        error: <any>null,
+        filteredData: <any>[]
+
 
     },
     reducers: {
-      getAllPokemon: (state, action) => {
-          console.log(action)
+      filteredPokemon: (state, action) => {
+        console.log(action)
+          state.filteredData = action.payload
         
       },
    
@@ -65,11 +68,12 @@ import { API } from '../../api';
       },
   });
 
-  export const {getAllPokemon } = pokemonSlice.actions;
+  export const {filteredPokemon } = pokemonSlice.actions;
 
   export const dataSelector = (state:any) => state.pokemon.data;
   export const dataListSelector = (state:any) => state.pokemon.dataList;
   export const statusSelector = (state:any) => state.pokemon.status;
+  export const filteredSelector = (state:any) => state.pokemon.filteredData;
   
   
   export default pokemonSlice.reducer;

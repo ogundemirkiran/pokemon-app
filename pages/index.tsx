@@ -3,7 +3,7 @@ import Link from "next/link";
 import MainBtn from "../src/components/buttons/main-btn";
 import useWindowSize from "../src/hooks/useWindowSize";
 
-import styles from "./index.module.css";
+import styles from "../styles/home.module.css";
 const Home: NextPage = () => {
   const size = useWindowSize();
 

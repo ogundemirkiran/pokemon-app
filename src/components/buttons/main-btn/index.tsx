@@ -1,6 +1,7 @@
 import React from "react";
 import styles from "./main-btn.module.css";
 
+// eslint-disable-next-line react/display-name
 const MainBtn = React.forwardRef(({ onClick, href }: any, ref: any) => {
   return (
     <div className={styles.wrapper}>

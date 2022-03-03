@@ -1,7 +1,7 @@
 import { useRouter } from "next/router";
 import React from "react";
-import CloseBtn from "../buttons/close-btn";
-import PokeCard from "./poke-card";
+import CloseBtn from "../../buttons/close-button";
+import PokeCard from "../poke-card";
 import styles from "./poke-detail-card.module.css";
 
 interface PokeDetailCardType {

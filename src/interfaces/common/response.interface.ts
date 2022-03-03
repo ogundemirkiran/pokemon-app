@@ -1,6 +1,6 @@
 export interface IEnpoint {
-    url: string;
-    method: string;
+    url?: any;
+    method?: any;
   }
 
   export interface IRequestData {
