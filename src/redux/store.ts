@@ -1,7 +1,5 @@
 import {
-    Action,
     configureStore,
-    ThunkAction,
   } from '@reduxjs/toolkit';
   import pokemonReducer from './pokemon/pokemonSlice';
   

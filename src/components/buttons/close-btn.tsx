@@ -8,7 +8,10 @@ interface CloseBtnType {
 export default function CloseBtn({ comeBackPokemon }: CloseBtnType) {
   return (
     <div className={styles.closeBtn} onClick={() => comeBackPokemon()}>
-      <img src="https://img.icons8.com/officexs/16/000000/delete-sign.png" />
+      <img
+        src="https://img.icons8.com/officexs/16/000000/delete-sign.png"
+        alt="Landscape picture"
+      />
     </div>
   );
 }

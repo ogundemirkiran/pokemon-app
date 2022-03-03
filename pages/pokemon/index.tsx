@@ -1,6 +1,5 @@
-import React, { useEffect, useMemo } from "react";
+import React, { useEffect } from "react";
 import {
-  getAllPokemon,
   dataListSelector,
   statusSelector,
   fetchPokemonList,
@@ -14,7 +13,6 @@ import GenerationInfo from "../../src/components/mixed/generation-info";
 import NextBtn from "../../src/components/buttons/next-btn";
 import { CalculationGeneration } from "../../src/utility/calculation-generation";
 import Loading from "../../src/components/loading";
-import { Loader } from "@mantine/core";
 
 export default function Pokemon() {
   const dispatch = useDispatch();
@@ -22,15 +20,11 @@ export default function Pokemon() {
   const dataList = useSelector(dataListSelector);
   const status = useSelector(statusSelector);
 
-  console.log(status);
-
   useEffect(() => {
     dispatch(fetchPokemonList());
-  }, []);
+  }, [dispatch]);
 
   function showMore(e: any) {
-    console.log(e.type);
-
     e.type === "click" && dispatch(fetchPokemonList(data.next));
   }
 
@@ -51,7 +45,7 @@ export default function Pokemon() {
 
           <div className={styles.pokeGrid}>
             {dataList.map((res: any, index: number) => (
-              <CardPoke index={index + 1} name={res.name} />
+              <CardPoke index={index + 1} name={res.name} key={index} />
             ))}
           </div>
           <br />

@@ -1,4 +1,3 @@
-import { route } from "next/dist/server/router";
 import { useRouter } from "next/router";
 import React from "react";
 import CloseBtn from "../buttons/close-btn";
@@ -37,8 +36,8 @@ export default function PokeDetailCard({
           Type:
           <span>
             <ul>
-              {datasetDetail.types.map((res: any) => (
-                <li style={{ marginLeft: 15, marginTop: 5 }}>
+              {datasetDetail.types.map((res: any, index: number) => (
+                <li key={index} style={{ marginLeft: 15, marginTop: 5 }}>
                   {res.type.name}
                 </li>
               ))}
@@ -56,8 +55,8 @@ export default function PokeDetailCard({
           Habilities:
           <span>
             <ul>
-              {datasetDetail.abilities.map((res: any) => (
-                <li style={{ marginLeft: 15, marginTop: 5 }}>
+              {datasetDetail.abilities.map((res: any, index: number) => (
+                <li key={index} style={{ marginLeft: 15, marginTop: 5 }}>
                   {res.ability.name}
                 </li>
               ))}

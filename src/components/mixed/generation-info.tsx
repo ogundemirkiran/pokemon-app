@@ -10,8 +10,6 @@ export default function GenerationInfo({
   dataListInfo,
   dataListLength,
 }: GenerationInfoType) {
-  console.log(dataListInfo);
-  console.log(dataListLength);
   return (
     <div className={styles.generationContainer}>
       <h4 className={styles.pokeGeneration}>Generation {dataListInfo} </h4>

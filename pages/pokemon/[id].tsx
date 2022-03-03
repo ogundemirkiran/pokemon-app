@@ -1,9 +1,7 @@
 import React from "react";
-import { useSelector } from "react-redux";
 import { API } from "../../src/api";
 import PokeDetailCard from "../../src/components/cards/poke-detail-card";
 import Loading from "../../src/components/loading";
-import { statusSelector } from "../../src/redux/pokemon/pokemonSlice";
 
 export async function getServerSideProps(context: any) {
   const { id } = context.params;

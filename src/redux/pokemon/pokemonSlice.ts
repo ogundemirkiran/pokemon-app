@@ -2,22 +2,13 @@ import {
     createSlice,
     createAsyncThunk
   } from '@reduxjs/toolkit';
-import { error } from 'console';
 import { API } from '../../api';
 
 
-//   export const getTodosAsync = createAsyncThunk(
-//     "todos/getTodosAsync",
-//     async () => {
-//       const res = await fetch(`${process.env.REACT_APP_API_BASE_ENDPOINT}/todos`);
-//       return await res.json();
-//     }
-//   );
 
   export const fetchPokemonList = createAsyncThunk(
     'pokemon/fetchPokemon',
     async (url?:string) => {
-      console.log(url)
      
 
         if(url === undefined){
@@ -55,7 +46,6 @@ import { API } from '../../api';
         builder
           .addCase(fetchPokemonList.pending, (state, action) => {
            state.status = "loading"
-           console.log(action)
           })
           .addCase(fetchPokemonList.fulfilled, (state, action) => {
             state.status = "succeeded"

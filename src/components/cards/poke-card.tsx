@@ -1,5 +1,4 @@
-import Link from "next/link";
-import { Router, useRouter } from "next/router";
+import { useRouter } from "next/router";
 import React from "react";
 import styles from "./poke-card.module.css";
 
@@ -15,7 +14,6 @@ export default function PokeCard({ index, name, borderNone }: PokeCardType) {
   return (
     <div
       className={borderNone ? styles.pokeBorderNone : styles.pokeContent}
-      key={index}
       onClick={borderNone ? () => {} : () => router.push(`/pokemon/${name}`)}
     >
       <>
@@ -24,6 +22,7 @@ export default function PokeCard({ index, name, borderNone }: PokeCardType) {
           src={`https://img.pokemondb.net/sprites/black-white/anim/normal/${name}.gif`}
           alt={name}
         />
+
         <p className={styles.pokeName}> {name} </p>
       </>
     </div>

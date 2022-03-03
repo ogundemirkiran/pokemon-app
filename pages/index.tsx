@@ -15,7 +15,7 @@ const Home: NextPage = () => {
       }}
     >
       <div className={styles.indexPhoto}>
-        <Link href="/pokemon">
+        <Link href="/pokemon" passHref>
           <MainBtn />
         </Link>
       </div>
