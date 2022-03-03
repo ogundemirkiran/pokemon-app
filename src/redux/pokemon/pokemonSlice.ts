@@ -16,12 +16,14 @@ import { API } from '../../api';
   export const fetchPokemonList = createAsyncThunk(
     'pokemon/fetchPokemon',
     async (url?:string) => {
-        if(url){
-            let response = await API.POKEMON_LIST_GENERATION(url)
-            return response.data
+      console.log(url)
+        if(url === undefined){
+          let response = await API.POKEMON_LIST()
+          return response.data
 
         }else{
-            let response = await API.POKEMON_LIST()
+           
+            let response = await API.POKEMON_LIST_GENERATION(url)
             return response.data
         }
       
@@ -53,8 +55,8 @@ import { API } from '../../api';
           .addCase(fetchPokemonList.fulfilled, (state, action) => {
             state.status = "succeeded"
             state.data = action.payload
-            state.dataList = [...state.dataList , ...action.payload.results]
-           console.log(action.payload.result)
+            let check = state.dataList[0]?.name === action?.payload?.results[0]?.name
+            check === false &&  (state.dataList = [...state.dataList , ...action.payload.results])
 
            
           })

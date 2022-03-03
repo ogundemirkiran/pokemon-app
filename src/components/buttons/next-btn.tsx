@@ -10,7 +10,7 @@ export default function NextBtn({ showMore }: NextBtnType) {
     <div className={styles.mainContainer}>
       <div className={styles.container}>
         <div className={styles.center}>
-          <button className={styles.btn} onClick={() => showMore()}>
+          <button className={styles.btn} onClick={(e: any) => showMore(e)}>
             <svg
               width="180px"
               height="60px"

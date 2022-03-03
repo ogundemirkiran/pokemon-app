@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useMemo } from "react";
 import {
   getAllPokemon,
   dataListSelector,
@@ -24,8 +24,10 @@ export default function Pokemon() {
     dispatch(fetchPokemonList());
   }, []);
 
-  function showMore() {
-    dispatch(fetchPokemonList(data.next));
+  function showMore(e: any) {
+    console.log(e.type);
+
+    e.type === "click" && dispatch(fetchPokemonList(data.next));
   }
 
   return (
