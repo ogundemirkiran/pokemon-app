@@ -13,12 +13,12 @@ import { API } from '../../api';
 
         if(url === undefined){
           let response = await API.POKEMON_LIST()
-          return response.data
+          return response?.data
 
         }else{
            
             let response = await API.POKEMON_LIST_GENERATION(url)
-            return response.data
+             return response?.data
         }
       
     }
@@ -32,15 +32,14 @@ import { API } from '../../api';
         data:{},
         dataList: <any>[],
         status: "idle",
-        error: <any>null,
+        error: <any>false,
         filteredData: <any>[]
 
 
     },
     reducers: {
       filteredPokemon: (state, action) => {
-        console.log(action)
-          state.filteredData = action.payload
+          state.filteredData = action?.payload
         
       },
    
@@ -52,15 +51,15 @@ import { API } from '../../api';
           })
           .addCase(fetchPokemonList.fulfilled, (state, action) => {
             state.status = "succeeded"
-            state.data = action.payload
+            state.data = action?.payload
             let check = state.dataList[0]?.name === action?.payload?.results[0]?.name
-            check === false &&  (state.dataList = [...state.dataList , ...action.payload.results])
+            check === false &&  (state.dataList = [...state.dataList , ...action?.payload?.results])
 
            
           })
           .addCase(fetchPokemonList.rejected, (state, action) => {
             state.status = "failed"
-            state.error = action.error.message;
+            state.error = action?.error?.message;
            
 
            
@@ -74,6 +73,7 @@ import { API } from '../../api';
   export const dataListSelector = (state:any) => state.pokemon.dataList;
   export const statusSelector = (state:any) => state.pokemon.status;
   export const filteredSelector = (state:any) => state.pokemon.filteredData;
+  export const errorSelector = (state:any) => state.pokemon.error;
   
   
   export default pokemonSlice.reducer;

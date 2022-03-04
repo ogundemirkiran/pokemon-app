@@ -7,6 +7,7 @@ import {
   dataSelector,
   filteredPokemon,
   filteredSelector,
+  errorSelector,
 } from "../../src/redux/pokemon/pokemonSlice";
 import { useDispatch, useSelector } from "react-redux";
 import CardPoke from "../../src/components/cards/poke-card";
@@ -24,11 +25,11 @@ export default function Pokemon() {
   const dataList = useSelector(dataListSelector);
   const filteredData = useSelector(filteredSelector);
   const status = useSelector(statusSelector);
+  const error = useSelector(errorSelector);
 
   const Scroll = require("react-scroll");
   const scroll = Scroll.animateScroll;
 
-  // const [filteredData, setFilteredData] = useState<any[]>([...dataList]);
   const [title, setTitle] = useState<any>("");
 
   useEffect(() => {
@@ -36,7 +37,7 @@ export default function Pokemon() {
   }, [dispatch]);
 
   useEffect(() => {
-    handleOnChange();
+    HandleOnChange();
   }, [title, dataList]);
 
   function showMore(e: any) {
@@ -45,50 +46,50 @@ export default function Pokemon() {
     scroll.scrollToBottom();
   }
 
-  function handleOnChange() {
-    // if (title !== "") {
+  function HandleOnChange() {
     let filtered = dataList.filter(
       (res: any) =>
         res.name.toLowerCase().indexOf(title.toLowerCase().trim()) > -1
     );
 
-    console.log(filtered);
     dispatch(filteredPokemon(filtered));
-    // }
   }
 
-  console.log(dataList);
-  return (
-    <div>
-      {status === "succeeded" ? (
-        <div className={styles.pokeContainer}>
-          <PokeLogo />
-          <br />
-          <br />
+  if (error) {
+    return <div> Error Message: {error} </div>;
+  } else {
+    return (
+      <div>
+        {status === "succeeded" ? (
+          <div className={styles.pokeContainer}>
+            <PokeLogo />
+            <br />
+            <br />
 
-          <GenerationInfo
-            dataListInfo={CalculationGeneration(dataList.length)}
-            dataListLength={dataList.length}
-          />
-          <br />
-          <br />
+            <GenerationInfo
+              dataListInfo={CalculationGeneration(dataList.length)}
+              dataListLength={dataList.length}
+            />
+            <br />
+            <br />
 
-          <PokeFilter title={title} setTitle={setTitle} />
-          <br />
-          <br />
+            <PokeFilter title={title} setTitle={setTitle} />
+            <br />
+            <br />
 
-          <div className={styles.pokeGrid}>
-            {filteredData.map((res: any, index: number) => (
-              <CardPoke index={index + 1} name={res.name} key={index} />
-            ))}
+            <div className={styles.pokeGrid}>
+              {filteredData.map((res: any, index: number) => (
+                <CardPoke index={index + 1} name={res.name} key={index} />
+              ))}
+            </div>
+            <br />
+            <br />
+            <NextBtn showMore={showMore} />
           </div>
-          <br />
-          <br />
-          <NextBtn showMore={showMore} />
-        </div>
-      ) : (
-        <Loading />
-      )}
-    </div>
-  );
+        ) : (
+          <Loading />
+        )}
+      </div>
+    );
+  }
 }

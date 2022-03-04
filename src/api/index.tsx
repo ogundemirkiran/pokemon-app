@@ -2,7 +2,7 @@ import AxiosData from "./api";
 import { API_ENDPOINT } from "./endpoints";
 
 export const API = Object.freeze({
-  POKEMON_LIST: async () =>
+  POKEMON_LIST: async (): Promise<any> =>
     await AxiosData(API_ENDPOINT.pokemons.get).then((data) => data),
 
   POKEMON_LIST_GENERATION: async (url: string) =>

@@ -1,4 +1,4 @@
 export function CalculationGeneration(item: number) {
-  let response = item / 20;
-  return response;
+  let result = item / 20;
+  return result;
 }
