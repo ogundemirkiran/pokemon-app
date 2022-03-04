@@ -1,6 +1,6 @@
 # Demo
 
-https://ogun-demirkiran-pokemon-app.netlify.app/
+https://pokemon-app-ogundemirkiran.vercel.app/
 
 ---
 
